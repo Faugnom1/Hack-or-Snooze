@@ -6,8 +6,11 @@ let myStories;
 /** Get and show stories when site first loads. */
 
 async function getAndShowMyStories() {
-    currentUser = await User.loginViaStoredCredentials(currentUser.loginToken, currentUser.username)
-    myStories = currentUser.ownStories;
+  currentUser = await User.loginViaStoredCredentials(
+    currentUser.loginToken,
+    currentUser.username
+  );
+  myStories = currentUser.ownStories;
   putMyStoriesOnPage();
 }
 
@@ -24,8 +27,10 @@ function generateMyStoryMarkup(story) {
   const hostName = story.getHostName();
 
   const favorites = currentUser.favorites;
-  const hasMatchingStoryId = favorites.some(item=>item.storyId===story.storyId)
-  const starClass = hasMatchingStoryId ? "fas" : "far"
+  const hasMatchingStoryId = favorites.some(
+    (item) => item.storyId === story.storyId
+  );
+  const starClass = hasMatchingStoryId ? "fas" : "far";
 
   return $(`
       <li id="${story.storyId}">
@@ -59,15 +64,15 @@ function putMyStoriesOnPage() {
 }
 
 async function deleteStory(evt) {
-    const storyId = evt.currentTarget.parentElement.id
-    const response = await axios({
-      url: `${BASE_URL}/stories/${storyId}`,
-      method: "DELETE",
-      data: {
-        "token": currentUser.loginToken
-      }
-    });
-    evt.currentTarget.parentElement.remove();
+  const storyId = evt.currentTarget.parentElement.id;
+  const response = await axios({
+    url: `${BASE_URL}/stories/${storyId}`,
+    method: "DELETE",
+    data: {
+      token: currentUser.loginToken,
+    },
+  });
+  evt.currentTarget.parentElement.remove();
 }
 
 $body.on("click", ".trash", deleteStory);

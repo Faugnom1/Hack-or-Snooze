@@ -113,6 +113,7 @@ function updateUIOnUserLogin() {
   updateNavOnLogin();
 }
 
+/** Sends favorited story information the api  */
 async function storeFavoriteStory(storyId) {
   const response = await axios({
     url: `${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`,
@@ -125,6 +126,7 @@ async function storeFavoriteStory(storyId) {
   console.log(response)
 }
 
+/** Sends removed favorited story information the api  */
 async function deleteFavoriteStory(storyId) {
   const response = await axios({
     url: `${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`,

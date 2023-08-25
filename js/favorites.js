@@ -6,8 +6,11 @@ let favorites;
 /** Get and show stories when site first loads. */
 
 async function getAndShowFavorites() {
-    currentUser = await User.loginViaStoredCredentials(currentUser.loginToken, currentUser.username)
-    favorites = currentUser.favorites;
+  currentUser = await User.loginViaStoredCredentials(
+    currentUser.loginToken,
+    currentUser.username
+  );
+  favorites = currentUser.favorites;
   putFavoritesOnPage();
 }
 

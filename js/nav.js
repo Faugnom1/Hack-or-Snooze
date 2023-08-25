@@ -78,6 +78,7 @@ async function showMyStories(evt) {
 
 $body.on("click", "#nav-my-stories", showMyStories);
 
+
 function toggleFavoriteStory(evt) {
   console.debug("toggleFavoriteStory", evt);
   evt.preventDefault();
@@ -90,7 +91,6 @@ function toggleFavoriteStory(evt) {
     evt.currentTarget.className = "far fa-star favorites";
     deleteFavoriteStory(currentStar.parentElement.id);
   }
-
 }
 
 $body.on("click", ".favorites", toggleFavoriteStory);

@@ -20,13 +20,15 @@ async function getAndShowStoriesOnStart() {
  */
 
 function generateStoryMarkup(story) {
-  // console.debug("generateStoryMarkup", story);
+  console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
   const favorites = currentUser.favorites;
 
-  const hasMatchingStoryId = favorites.some(item=>item.storyId===story.storyId)
-  const starClass = hasMatchingStoryId ? "fas" : "far"
+  const hasMatchingStoryId = favorites.some(
+    (item) => item.storyId === story.storyId
+  );
+  const starClass = hasMatchingStoryId ? "fas" : "far";
 
   return $(`
       <li id="${story.storyId}">
@@ -45,7 +47,7 @@ function generateStoryMarkup(story) {
 /** Gets list of stories from server, generates their HTML, and puts on page. */
 
 function putStoriesOnPage() {
-  console.debug("putStoriesOnPage");
+  // console.debug("putStoriesOnPage");
 
   $allStoriesList.empty();
 
@@ -73,12 +75,15 @@ async function handleFormSubmission(evt) {
   $submitForm.trigger("reset");
 
   // Call the .addStory method to add a new story
-  const newStory = await storyList.addStory(currentUser, { author, title, url });
+  const newStory = await storyList.addStory(currentUser, {
+    author,
+    title,
+    url,
+  });
 
   // Add the new story to the page
   const $newStory = generateStoryMarkup(newStory);
   $allStoriesList.prepend($newStory);
- 
 
   // Reset the form fields
   $("#create-author").val("");
@@ -88,8 +93,6 @@ async function handleFormSubmission(evt) {
   window.location.reload();
   hidePageComponents();
   putStoriesOnPage();
- 
 }
 // Attach the submit event handler to the form
 $submitForm.on("submit", handleFormSubmission);
-

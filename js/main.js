@@ -7,7 +7,7 @@ const $body = $("body");
 const $storiesLoadingMsg = $("#stories-loading-msg");
 const $allStoriesList = $("#all-stories-list");
 
-const $home = $("#nav-all-stories")
+const $home = $("#nav-all-stories");
 
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
@@ -15,12 +15,12 @@ const $signupForm = $("#signup-form");
 const $userInfoSection = $("#profile-info");
 
 const $navAllStories = $("#nav-all-stories");
-const $submitForm =  $("#submit-form");
+const $submitForm = $("#submit-form");
 
 const $loginNavBar = $("#login-nav-bar");
 
-const $navMyStories = $("#nav-my-stories") ;
-const $showUserStories = $('#my-stories');
+const $navMyStories = $("#nav-my-stories");
+const $showUserStories = $("#my-stories");
 
 const $userFavorites = $("#nav-favorites");
 const $showFavorites = $("#user-favorites");
@@ -44,7 +44,7 @@ function hidePageComponents() {
     $userInfoSection,
     $showUserStories,
   ];
-  components.forEach(c => c.hide());
+  components.forEach((c) => c.hide());
 }
 
 /** Overall function to kick off the app. */
@@ -56,14 +56,19 @@ async function start() {
   await checkForRememberedUser();
   await getAndShowStoriesOnStart();
 
+  putStoriesOnPage();
+
   // if we got a logged-in user
   if (currentUser) updateUIOnUserLogin();
 }
 
 // Once the DOM is entirely loaded, begin the app
 
-console.warn("HEY STUDENT: This program sends many debug messages to" +
-  " the console. If you don't see the message 'start' below this, you're not" +
-  " seeing those helpful debug messages. In your browser console, click on" +
-  " menu 'Default Levels' and add Verbose");
+console.warn(
+  "HEY STUDENT: This program sends many debug messages to" +
+    " the console. If you don't see the message 'start' below this, you're not" +
+    " seeing those helpful debug messages. In your browser console, click on" +
+    " menu 'Default Levels' and add Verbose"
+);
+
 $(start);
