@@ -7,12 +7,10 @@ const $body = $("body");
 const $storiesLoadingMsg = $("#stories-loading-msg");
 const $allStoriesList = $("#all-stories-list");
 
-const home = $("#nav-all-stories")
+const $home = $("#nav-all-stories")
 
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
-
-const $favoriteStar = []; 
 
 const $userInfoSection = $("#profile-info");
 
