@@ -91,14 +91,11 @@ class StoryList {
    */
 
   async addStory(user, newStory) {
-    const reponse = await axios({
-      url: `${BASE_URL}/stories`,
-      method: "POST",
-      data: {
+    const response = await axios.post(`${BASE_URL}/stories`, {
         token: user.loginToken,
         story: newStory
       }
-    })
+    )
     const storyData = response.data.story;
     const newStoryInstance = new Story(storyData);
     this.stories.unshift(newStoryInstance);

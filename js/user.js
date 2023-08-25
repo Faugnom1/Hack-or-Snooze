@@ -96,7 +96,6 @@ function saveUserCredentialsInLocalStorage() {
   }
 }
 
-
 /******************************************************************************
  * General UI stuff about users
  */
@@ -113,3 +112,29 @@ function updateUIOnUserLogin() {
   $allStoriesList.show();
   updateNavOnLogin();
 }
+
+async function storeFavoriteStory(storyId) {
+  const response = await axios({
+    url: `${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`,
+    method: "POST",
+    data: 
+    {
+      "token": currentUser.loginToken
+    }
+  });
+  console.log(response)
+}
+
+async function deleteFavoriteStory(storyId) {
+  const response = await axios({
+    url: `${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`,
+    method: "DELETE",
+    data: 
+    {
+      "token": currentUser.loginToken
+    }
+  });
+  console.log(response)
+}
+
+

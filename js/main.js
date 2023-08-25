@@ -12,7 +12,7 @@ const home = $("#nav-all-stories")
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
 
-const $favoriteStar = $('#star');
+const $favoriteStar = []; 
 
 const $userInfoSection = $("#profile-info");
 

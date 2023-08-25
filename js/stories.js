@@ -23,9 +23,14 @@ function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
+  const favorites = currentUser.favorites;
+
+  const hasMatchingStoryId = favorites.some(item=>item.storyId===story.storyId)
+  const starClass = hasMatchingStoryId ? "fas" : "far"
+
   return $(`
       <li id="${story.storyId}">
-      <span class="far fa-star" id="star"></span>
+      <span class="${starClass} fa-star favorites"></span>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -82,7 +87,6 @@ async function handleFormSubmission(evt) {
 
   window.location.reload();
   hidePageComponents();
-  // getStories();
   putStoriesOnPage();
  
 }
