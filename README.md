@@ -1,2 +1,2 @@
 # Hack-or-Snooze
-21 Section 1 Project
+Hacker News mock up 
